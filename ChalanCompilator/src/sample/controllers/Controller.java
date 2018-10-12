@@ -27,17 +27,19 @@ import static sample.Constants.Configs.sampleCode;
 
 public class Controller extends Application {
     private Stage stage;
-    @FXML private HBox panesote;
+    @FXML
+    private HBox panesote;
     @FXML
     TextArea txtConsola;
 
 
     CodeArea codeArea = new CodeArea();
 
-    @FXML protected void initialize(){
+    @FXML
+    protected void initialize() {
         codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
         codeArea.replaceText(0, 0, sampleCode);
-        codeArea.setPrefSize(1200,330);
+        codeArea.setPrefSize(1200, 330);
         Subscription cleanupWhenNoLongerNeedIt = codeArea
                 .multiPlainChanges()
                 .successionEnds(Duration.ofMillis(500))
@@ -46,40 +48,61 @@ public class Controller extends Application {
     }//llave load
 
 
-    public void evtSalir (ActionEvent event){ System.exit(0); }
-    public void evtAbrir (ActionEvent event){
-        FileChooser of= new FileChooser();
+    public void evtSalir(ActionEvent event) {
+        System.exit(0);
+    }
+
+    public void evtAbrir(ActionEvent event) {
+        FileChooser of = new FileChooser();
         of.setTitle("Abrir archivo ccf");
-        FileChooser.ExtensionFilter filtro= new FileChooser.ExtensionFilter("Archivos .ccf","*.ccf");
+        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Archivos .ccf", "*.ccf");
         of.getExtensionFilters().add(filtro);
         File file = of.showOpenDialog(stage);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.stage=stage;
+        this.stage = stage;
     }
-    public void ejecutar(ActionEvent event){
+
+    public void ejecutar(ActionEvent event) {
         compilar();
 
     }//llave ejecutarrrr
-    public void compilar (){
-        txtConsola.setText(" ");
-        long tInicial=System.currentTimeMillis();
 
-        String texto=codeArea.getText();
-        String[] renglones=texto.split("\\n");
-        for(int x=0;x<renglones.length;x++){
-            for(int y=0; y< Configs.EXPRESIONES.length;y++){
-                Pattern patron=Pattern.compile(Configs.EXPRESIONES[y]);
-                Matcher matcher=patron.matcher(renglones[x]);
-                if(!matcher.matches()){
-                    txtConsola.setText( txtConsola.getText() +"\n" +"Error de sintaxys en la linea "+(x+1));
+    public void compilar() {
+        txtConsola.setText(" ");
+        long tInicial = System.currentTimeMillis();
+
+        String texto = codeArea.getText();
+        String[] renglones = texto.split("\\n");
+
+        for (int x = 0; x < renglones.length; x++) {
+            boolean bandera = false;
+            if (!renglones[x].trim().equals("")) {
+                for (int y = 0; y < Configs.EXPRESIONES.length && bandera == false; y++) {
+                    Pattern patron = Pattern.compile(Configs.EXPRESIONES[y]);
+                    Matcher matcher = patron.matcher(renglones[x]);
+                    if (matcher.matches()) {
+                        bandera = true;
+                    }
+
+                if (bandera == false) {
+                    txtConsola.setText(
+                            txtConsola.getText() + "\n" +
+                                    "Error de sintaxis en la linea" + (x + 1));
                 }
-            }//llave for y
-        }//llave for
+
+            }
+
+        }
+    }
+
         long tFinal=System.currentTimeMillis()-tInicial;
         txtConsola.setText(txtConsola.getText()+ "\n" +
                 "Compilado en :"+tFinal+" milisegundos");
+
+
+
     }//llave compilar
 }

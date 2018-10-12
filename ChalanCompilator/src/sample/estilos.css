@@ -1,25 +1,115 @@
 .fondo{
--fx-background-color:#1c1c1c;
+    -fx-background-color:#1c1c1c;
 }
 .menu{
--fx-background-color:rgb(50,50,50);
+    -fx-background-color:rgb(50,50,50);
 }
 .menu .label{
--fx-text-fill:#FFFFFF;
+    -fx-text-fill: #FFFFFF;
 }
-.progress-bar > .track{
--fx-text-box-border: #15a319;
--fx-control-inner-background: #176630;
--fx-accent: red;
+
+
+.progress-bar > .track {
+  -fx-text-box-border: #F69C95;
+  -fx-control-inner-background: #F69C95;
 }
+
+.consola{
+    -fx-background-color: rgb(28,28,28);
+    -fx-control-inner-background: #1C1C1C;
+    -fx-text-fill: rgb(0,128,0);
+    -fx-font-size:15px;
+    -fx-text-box-border: transparent;
+}
+
+.editor{
+    -fx-background-color: rgb(50,50,50);
+    -fx-control-inner-background: rgb(50,50,50);
+    -fx-text-fill: rgb(255,255,255);
+    -fx-font-size:15;
+}
+
+.output{
+     -fx-background-color: transparent;
+     -fx-control-inner-background: rgb(50,50,50);
+     -fx-text-fill: rgb(0,128,0);
+     -fx-font-size:15;
+}
+.tab-pane .tab-header-area .tab-header-background{
+    -fx-opacity: 0;
+}
+
+.tab-pane{
+    -fx-tab-min-width:20px;
+}
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab{
+    -fx-background-color: #F69C95;
+}
+.tab-pane .tab:selected{
+    -fx-background-color: rgb(50,50,50);
+}
+
+.tab .tab-label{
+    -fx-alignmet: center;
+    -fx-text-fill: rgb(255,255,255);
+    -fx-text-size: 12px;
+    -fx-text-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignmet: center;
+    -fx-text-fill: rgb(255,255,255);
+}
+.tab-pane:top *.tab-header-area{
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-paddin: 0.41557em 0.166667em 0.0em 0.0em;
+}
+
+.botonRun{
+    -fx-background-radius: 5em;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-backgroung-color: rgb(28,28,28);
+}
+
+
+/*ESTILOS PARA  LOS SUBMENUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: rgb(50,50,50);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+/*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+    fx-text-fill: #f5f5f5;
+}
+
+/*ESTILOS DEL COMPILADOOOOOOOOOOOOOR**/
 .keyword {
-    -fx-fill: purple;
+    -fx-fill: #F69C95;
+    -fx-font-weight: bold;
+}
+.normal{
+    -fx-fill: white;
+}
+.build_in_function{
+    -fx-fill: #ff6400;
     -fx-font-weight: bold;
 }
 .semicolon {
+    -fx-fill: red;
     -fx-font-weight: bold;
 }
-.paren {
+.boolean{
+    -fx-fill: teal;
+    -fx-font-weight: bold;
+}
+.paren{
     -fx-fill: firebrick;
     -fx-font-weight: bold;
 }
@@ -32,7 +122,7 @@
     -fx-font-weight: bold;
 }
 .string {
-    -fx-fill: blue;
+    -fx-fill: yellow;
 }
 
 .comment {
@@ -40,5 +130,6 @@
 }
 
 .paragraph-box:has-caret {
-    -fx-background-color: #f2f9fc;
+    -fx-background-color: #f2f9fc33;
 }
+
