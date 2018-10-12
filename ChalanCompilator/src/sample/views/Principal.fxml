@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" styleClass="fondo" stylesheets="@../estilos.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.Controller">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="1200.0" styleClass="label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar styleClass="menu" stylesheets="@../estilos.css">
+              <menus>
+                <Menu mnemonicParsing="false" styleClass="|" text="Archivo">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Nuevo" />
+                        <MenuItem mnemonicParsing="false" onAction="#evtAbrir" text="Abrir..." />
+                        <MenuItem mnemonicParsing="false" text="Guardar" />
+                        <MenuItem mnemonicParsing="false" text="Guardar como..." />
+                    <MenuItem mnemonicParsing="false" onAction="#evtSalir" text="Salir" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Editar">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Copiar" />
+                        <MenuItem mnemonicParsing="false" text="Pegar" />
+                        <MenuItem mnemonicParsing="false" text="Seleccionar todo" />
+                  </items>
+                </Menu>
+                  <Menu fx:id="btnEjecutar" mnemonicParsing="false" onAction="#ejecutar" text="Ejecutar">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#ejecutar" text="Run ►" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Acerca de" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <TabPane prefHeight="600.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Archvio CHL">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox fx:id="panesote" prefHeight="400.0" prefWidth="1200.0" />
+                              <TextArea fx:id="txtConsola" prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                </Tab>
+                <Tab text="Resultado">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
